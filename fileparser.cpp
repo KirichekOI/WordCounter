@@ -48,18 +48,6 @@ void FileParser::startParsing(const QString &filePath)
         emit barDataChanged(getTop15(m_barData));
     }
     emit finished();
-    printMessage("Word count is finished", QMessageBox::Icon::Information);
-}
-
-void FileParser::printMessage(const QString &msg, const QMessageBox::Icon &msgBoxIcon)
-{
-    QMessageBox msgBox;
-    msgBox.setWindowTitle("Word counter");
-    msgBox.setIcon(msgBoxIcon);
-    msgBox.setText(msg);
-    msgBox.setButtonText(QMessageBox::Ok, "OK");
-    msgBox.setModal(true);
-    msgBox.exec();
 }
 
 QVariantMap FileParser::getTop15(const QMap<QString, int> &barData) const

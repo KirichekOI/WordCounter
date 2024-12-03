@@ -11,6 +11,15 @@ ReadFileEngine::ReadFileEngine(QObject *parent) :
     connect(m_fileParser, &FileParser::progressChanged, this, &ReadFileEngine::progressChanged);
     connect(m_fileParser, &FileParser::barDataChanged, this, &ReadFileEngine::barDataChanged);
     connect(m_fileParser, &FileParser::finished, this, &ReadFileEngine::finished);
+    connect(m_fileParser, &FileParser::finished, this, [](){
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("Word counter");
+        msgBox.setIcon(QMessageBox::Icon::Information);
+        msgBox.setText("Word count is finished");
+        msgBox.setModal(true);
+        msgBox.exec();
+
+    }, Qt::QueuedConnection);
     connect(this, &ReadFileEngine::start, m_fileParser, &FileParser::startParsing);
     m_workThread->start();
 }

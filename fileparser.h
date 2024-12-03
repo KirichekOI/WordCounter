@@ -19,7 +19,6 @@ signals:
     void finished();
 
 private:
-    void printMessage(const QString &msg, const QMessageBox::Icon &msgBoxIcon);
     QVariantMap getTop15(const QMap<QString, int>& barData) const;
 
 private:
